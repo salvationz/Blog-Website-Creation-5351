@@ -73,14 +73,17 @@ const Category = () => {
     }
   };
 
-  const info = categoryInfo[category] || { description: "Explore our content", color: "bg-gray-500" };
+  const info = categoryInfo[category] || {
+    description: "Explore our content",
+    color: "bg-gray-500"
+  };
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen bg-gray-50"
+      className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-all duration-300"
     >
       {/* Category Header */}
       <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-20">
@@ -106,7 +109,7 @@ const Category = () => {
       </section>
 
       {/* Posts Grid */}
-      <section className="py-20">
+      <section className="py-20 bg-gray-50 dark:bg-gray-900 transition-all duration-300">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {posts.length > 0 ? (
             <motion.div
@@ -122,7 +125,7 @@ const Category = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   whileHover={{ y: -8 }}
-                  className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                  className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
                 >
                   <div className="relative overflow-hidden">
                     <img
@@ -131,16 +134,14 @@ const Category = () => {
                       className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2">
                       {post.title}
                     </h3>
-                    <p className="text-gray-600 mb-4 line-clamp-2">
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
                       {post.excerpt}
                     </p>
-
-                    <div className="flex items-center justify-between mb-4 text-sm text-gray-500">
+                    <div className="flex items-center justify-between mb-4 text-sm text-gray-500 dark:text-gray-400">
                       <div className="flex items-center space-x-4">
                         <div className="flex items-center space-x-1">
                           <SafeIcon icon={FiUser} className="w-4 h-4" />
@@ -152,16 +153,12 @@ const Category = () => {
                         </div>
                       </div>
                     </div>
-
                     <Link
                       to={`/post/${post.id}`}
-                      className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium group"
+                      className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium group"
                     >
                       Read More
-                      <SafeIcon 
-                        icon={FiArrowRight} 
-                        className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" 
-                      />
+                      <SafeIcon icon={FiArrowRight} className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>
                 </motion.article>
@@ -174,11 +171,11 @@ const Category = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-center py-16"
             >
-              <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                <SafeIcon icon={FiTag} className="w-8 h-8 text-gray-400" />
+              <div className="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                <SafeIcon icon={FiTag} className="w-8 h-8 text-gray-400 dark:text-gray-500" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">No Articles Yet</h3>
-              <p className="text-gray-600 mb-6">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">No Articles Yet</h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-6">
                 We're working on adding more content to this category. Check back soon!
               </p>
               <Link

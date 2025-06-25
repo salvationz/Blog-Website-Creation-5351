@@ -34,7 +34,7 @@ const About = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen bg-white"
+      className="min-h-screen bg-white dark:bg-gray-900 transition-all duration-300"
     >
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary-600 to-primary-700 text-white py-20">
@@ -53,14 +53,13 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl text-primary-100 leading-relaxed"
           >
-            We're passionate about sharing knowledge, insights, and stories that inspire 
-            and educate our community of developers, designers, and technology enthusiasts.
+            We're passionate about sharing knowledge, insights, and stories that inspire and educate our community of developers, designers, and technology enthusiasts.
           </motion.p>
         </div>
       </section>
 
       {/* Mission Section */}
-      <section className="py-20">
+      <section className="py-20 bg-white dark:bg-gray-900 transition-all duration-300">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -69,15 +68,12 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                At TechBlog, we believe that knowledge should be accessible to everyone. 
-                Our mission is to create a platform where the latest insights in technology, 
-                design, and business are shared in an engaging and understandable way.
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Our Mission</h2>
+              <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                At TechBlog, we believe that knowledge should be accessible to everyone. Our mission is to create a platform where the latest insights in technology, design, and business are shared in an engaging and understandable way.
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                We're committed to fostering a community where professionals can learn, 
-                grow, and stay ahead of the rapidly evolving digital landscape.
+              <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                We're committed to fostering a community where professionals can learn, grow, and stay ahead of the rapidly evolving digital landscape.
               </p>
             </motion.div>
             <motion.div
@@ -98,7 +94,7 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-all duration-300">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -107,10 +103,9 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Values</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              These core values guide everything we do and shape the way we create content 
-              and engage with our community.
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Our Values</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              These core values guide everything we do and shape the way we create content and engage with our community.
             </p>
           </motion.div>
 
@@ -122,15 +117,15 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow"
+                className="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex items-center mb-4">
-                  <div className="p-3 bg-primary-100 rounded-lg mr-4">
-                    <SafeIcon icon={value.icon} className="w-6 h-6 text-primary-600" />
+                  <div className="p-3 bg-primary-100 dark:bg-primary-900 rounded-lg mr-4">
+                    <SafeIcon icon={value.icon} className="w-6 h-6 text-primary-600 dark:text-primary-400" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900">{value.title}</h3>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">{value.title}</h3>
                 </div>
-                <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -138,7 +133,7 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-20">
+      <section className="py-20 bg-white dark:bg-gray-900 transition-all duration-300">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -147,18 +142,29 @@ const About = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Our diverse team of writers, developers, and designers brings together 
-              years of experience and passion for technology.
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Meet Our Team</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Our diverse team of writers, developers, and designers brings together years of experience and passion for technology.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { name: "Sarah Johnson", role: "Lead Writer & Tech Analyst", bio: "10+ years in web development" },
-              { name: "Michael Chen", role: "Senior Developer", bio: "React & Node.js specialist" },
-              { name: "Emma Rodriguez", role: "UX Designer", bio: "Design systems expert" }
+              {
+                name: "Sarah Johnson",
+                role: "Lead Writer & Tech Analyst",
+                bio: "10+ years in web development"
+              },
+              {
+                name: "Michael Chen",
+                role: "Senior Developer",
+                bio: "React & Node.js specialist"
+              },
+              {
+                name: "Emma Rodriguez",
+                role: "UX Designer",
+                bio: "Design systems expert"
+              }
             ].map((member, index) => (
               <motion.div
                 key={index}
@@ -173,9 +179,9 @@ const About = () => {
                     {member.name.split(' ').map(n => n[0]).join('')}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
-                <p className="text-primary-600 font-medium mb-2">{member.role}</p>
-                <p className="text-gray-600">{member.bio}</p>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{member.name}</h3>
+                <p className="text-primary-600 dark:text-primary-400 font-medium mb-2">{member.role}</p>
+                <p className="text-gray-600 dark:text-gray-300">{member.bio}</p>
               </motion.div>
             ))}
           </div>

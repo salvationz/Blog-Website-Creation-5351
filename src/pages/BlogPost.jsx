@@ -177,13 +177,16 @@ When state logic becomes complex, \`useReducer\` provides better organization:
 const todoReducer = (state, action) => {
   switch (action.type) {
     case 'ADD_TODO':
-      return { ...state, todos: [...state.todos, action.payload] };
+      return {
+        ...state,
+        todos: [...state.todos, action.payload]
+      };
     case 'TOGGLE_TODO':
       return {
         ...state,
         todos: state.todos.map(todo =>
-          todo.id === action.payload 
-            ? { ...todo, completed: !todo.completed } 
+          todo.id === action.payload
+            ? { ...todo, completed: !todo.completed }
             : todo
         )
       };
@@ -367,7 +370,7 @@ const Button = ({ variant = 'primary', size = 'medium', children, ...props }) =>
 Good documentation is crucial for adoption:
 
 | Documentation Type | Purpose | Audience |
-|-------------------|---------|----------|
+|--------------------|---------|----------|
 | Getting Started | Quick setup guide | Developers |
 | Component Docs | Usage examples | Designers & Developers |
 | Design Guidelines | Visual principles | Designers |
@@ -433,17 +436,14 @@ Successful design systems require dedicated teams:
 ## Common Pitfalls to Avoid
 
 ### Over-Engineering
-
 - Don't build components before you need them
 - Start simple and evolve based on real needs
 
 ### Lack of Governance
-
 - Establish clear contribution guidelines
 - Regular review and approval processes
 
 ### Poor Communication
-
 - Regular updates to consuming teams
 - Clear migration paths for breaking changes
 
@@ -478,14 +478,14 @@ Remember: A design system is never "done" – it's a living, evolving asset that
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen bg-white"
+      className="min-h-screen bg-white dark:bg-gray-900 transition-all duration-300"
     >
       {/* Back Button */}
-      <div className="bg-gray-50 py-4">
+      <div className="bg-gray-50 dark:bg-gray-800 py-4 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             to="/"
-            className="inline-flex items-center text-gray-600 hover:text-primary-600 transition-colors"
+            className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
           >
             <SafeIcon icon={FiArrowLeft} className="w-5 h-5 mr-2" />
             Back to Home
@@ -521,11 +521,11 @@ Remember: A design system is never "done" – it's a living, evolving asset that
               transition={{ duration: 0.6 }}
               className="mb-8"
             >
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
                 {post.title}
               </h1>
 
-              <div className="flex flex-wrap items-center gap-6 text-gray-600 mb-6">
+              <div className="flex flex-wrap items-center gap-6 text-gray-600 dark:text-gray-400 mb-6">
                 <div className="flex items-center space-x-2">
                   <SafeIcon icon={FiUser} className="w-5 h-5" />
                   <span className="font-medium">{post.author}</span>
@@ -542,15 +542,15 @@ Remember: A design system is never "done" – it's a living, evolving asset that
 
               {/* Action Buttons */}
               <div className="flex items-center space-x-4 mb-8">
-                <button className="flex items-center space-x-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                <button className="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors">
                   <SafeIcon icon={FiHeart} className="w-5 h-5" />
                   <span>Like</span>
                 </button>
-                <button className="flex items-center space-x-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                <button className="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors">
                   <SafeIcon icon={FiBookmark} className="w-5 h-5" />
                   <span>Save</span>
                 </button>
-                <button className="flex items-center space-x-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                <button className="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition-colors">
                   <SafeIcon icon={FiShare2} className="w-5 h-5" />
                   <span>Share</span>
                 </button>
@@ -570,17 +570,17 @@ Remember: A design system is never "done" – it's a living, evolving asset that
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-12 pt-8 border-t border-gray-200"
+              className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700"
             >
               <div className="flex items-center mb-4">
-                <SafeIcon icon={FiTag} className="w-5 h-5 text-gray-500 mr-2" />
-                <span className="text-gray-700 font-medium">Tags:</span>
+                <SafeIcon icon={FiTag} className="w-5 h-5 text-gray-500 dark:text-gray-400 mr-2" />
+                <span className="text-gray-700 dark:text-gray-300 font-medium">Tags:</span>
               </div>
               <div className="flex flex-wrap gap-2">
                 {post.tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-gray-200 transition-colors cursor-pointer"
+                    className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors cursor-pointer"
                   >
                     {tag}
                   </span>
@@ -593,7 +593,7 @@ Remember: A design system is never "done" – it's a living, evolving asset that
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="mt-12 p-6 bg-gray-50 rounded-xl"
+              className="mt-12 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl transition-all duration-300"
             >
               <div className="flex items-center space-x-4">
                 <div className="w-16 h-16 bg-primary-600 rounded-full flex items-center justify-center">
@@ -602,8 +602,8 @@ Remember: A design system is never "done" – it's a living, evolving asset that
                   </span>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900">{post.author}</h3>
-                  <p className="text-gray-600">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">{post.author}</h3>
+                  <p className="text-gray-600 dark:text-gray-300">
                     Senior Web Developer and Technology Enthusiast. Passionate about creating beautiful and functional web experiences.
                   </p>
                 </div>

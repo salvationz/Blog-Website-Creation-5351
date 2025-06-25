@@ -78,7 +78,7 @@ const CategorySection = () => {
   };
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -87,10 +87,10 @@ const CategorySection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Explore Categories
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Dive into topics that matter to you and discover content tailored to your interests.
           </p>
         </motion.div>
@@ -112,18 +112,22 @@ const CategorySection = () => {
               <Link
                 to={`/category/${category.slug}`}
                 onClick={handleLinkClick}
-                className="block p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
+                className="block p-6 bg-white dark:bg-gray-700 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 group"
               >
                 <div className="flex items-center mb-4">
-                  <div className={`p-3 ${category.color} rounded-lg mr-4`}>
+                  <div className={`p-3 ${category.color} rounded-lg mr-4 group-hover:scale-110 transition-transform duration-200`}>
                     <SafeIcon icon={category.icon} className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900">{category.name}</h3>
-                    <span className="text-sm text-gray-500">{category.count} articles</span>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200">
+                      {category.name}
+                    </h3>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">
+                      {category.count} articles
+                    </span>
                   </div>
                 </div>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                   {category.description}
                 </p>
               </Link>

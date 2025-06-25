@@ -67,6 +67,12 @@ export const cssVariables = `
   --color-gray-800: 30 41 59;
   --color-gray-900: 15 23 42;
 
+  /* Theme-specific variables */
+  --bg-primary: 255 255 255;
+  --bg-secondary: 249 250 251;
+  --text-primary: 17 24 39;
+  --text-secondary: 55 65 81;
+
   /* Spacing */
   --spacing-xs: 0.5rem;
   --spacing-sm: 0.75rem;
@@ -99,18 +105,32 @@ export const cssVariables = `
 }
 
 /* Dark mode variables */
+.dark {
+  --bg-primary: 17 24 39;
+  --bg-secondary: 31 41 55;
+  --text-primary: 249 250 251;
+  --text-secondary: 209 213 219;
+
+  /* Dark mode gray adjustments */
+  --color-gray-50: 15 23 42;
+  --color-gray-100: 30 41 59;
+  --color-gray-200: 51 65 85;
+  --color-gray-300: 71 85 105;
+  --color-gray-400: 100 116 139;
+  --color-gray-500: 148 163 184;
+  --color-gray-600: 203 213 225;
+  --color-gray-700: 226 232 240;
+  --color-gray-800: 241 245 249;
+  --color-gray-900: 248 250 252;
+}
+
+/* Automatic theme detection */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --color-gray-50: 15 23 42;
-    --color-gray-100: 30 41 59;
-    --color-gray-200: 51 65 85;
-    --color-gray-300: 71 85 105;
-    --color-gray-400: 100 116 139;
-    --color-gray-500: 148 163 184;
-    --color-gray-600: 203 213 225;
-    --color-gray-700: 226 232 240;
-    --color-gray-800: 241 245 249;
-    --color-gray-900: 248 250 252;
+  :root:not(.light) {
+    --bg-primary: 17 24 39;
+    --bg-secondary: 31 41 55;
+    --text-primary: 249 250 251;
+    --text-secondary: 209 213 219;
   }
 }
 `;

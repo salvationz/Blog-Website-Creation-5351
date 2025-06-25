@@ -1,52 +1,57 @@
-import React,{useState} from 'react';
-import {Link,useLocation} from 'react-router-dom';
-import {motion} from 'framer-motion';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
 import SearchModal from './SearchModal';
+import ThemeToggle from './ThemeToggle';
 
-const {FiMenu,FiX,FiSearch,FiUser,FiShield} = FiIcons;
+const { FiMenu, FiX, FiSearch, FiUser, FiShield } = FiIcons;
 
-const Header=()=> {
-  const [isMenuOpen,setIsMenuOpen]=useState(false);
-  const [isSearchOpen,setIsSearchOpen]=useState(false);
-  const location=useLocation();
+const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const location = useLocation();
 
-  const navigation=[
-    {name: 'Home',href: '/'},
-    {name: 'Technology',href: '/category/technology'},
-    {name: 'Design',href: '/category/design'},
-    {name: 'Business',href: '/category/business'},
-    {name: 'About',href: '/about'},
-    {name: 'Contact',href: '/contact'},
+  const navigation = [
+    { name: 'Home', href: '/' },
+    { name: 'Technology', href: '/category/technology' },
+    { name: 'Design', href: '/category/design' },
+    { name: 'Business', href: '/category/business' },
+    { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/contact' },
   ];
 
-  const isActive=(href)=> location.pathname===href;
+  const isActive = (href) => location.pathname === href;
 
-  const handleSearchOpen=()=> {
+  const handleSearchOpen = () => {
     setIsSearchOpen(true);
   };
 
-  const handleSearchClose=()=> {
+  const handleSearchClose = () => {
     setIsSearchOpen(false);
   };
 
-  const handleLinkClick=()=> {
+  const handleLinkClick = () => {
     setIsMenuOpen(false);
     // Scroll to top when clicking navigation links
-    window.scrollTo({top: 0,behavior: 'smooth'});
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <>
-      <header className="bg-white shadow-sm sticky top-0 z-50">
+      <header className="bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-50 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-2" onClick={handleLinkClick}>
+            <Link 
+              to="/" 
+              className="flex items-center space-x-2" 
+              onClick={handleLinkClick}
+            >
               <motion.div
-                whileHover={{scale: 1.05}}
-                className="text-2xl font-bold text-primary-600"
+                whileHover={{ scale: 1.05 }}
+                className="text-2xl font-bold text-primary-600 dark:text-primary-400"
               >
                 TechBlog
               </motion.div>
@@ -54,15 +59,15 @@ const Header=()=> {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-              {navigation.map((item)=> (
+              {navigation.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
                   onClick={handleLinkClick}
-                  className={`px-3 py-2 text-sm font-medium transition-colors ${
+                  className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                     isActive(item.href)
-                      ? 'text-primary-600 border-b-2 border-primary-600'
-                      : 'text-gray-600 hover:text-primary-600'
+                      ? 'text-primary-600 dark:text-primary-400 border-b-2 border-primary-600 dark:border-primary-400'
+                      : 'text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'
                   }`}
                 >
                   {item.name}
@@ -70,23 +75,26 @@ const Header=()=> {
               ))}
             </nav>
 
-            {/* Search, Login, Admin Icons */}
+            {/* Search, Theme Toggle, Login, Admin Icons */}
             <div className="hidden md:flex items-center space-x-4">
               <motion.button
-                whileHover={{scale: 1.1}}
-                whileTap={{scale: 0.9}}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
                 onClick={handleSearchOpen}
-                className="p-2 text-gray-600 hover:text-primary-600 transition-colors"
+                className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                 aria-label="Search"
               >
                 <SafeIcon icon={FiSearch} className="w-5 h-5" />
               </motion.button>
-              
+
+              {/* Theme Toggle */}
+              <ThemeToggle size="md" variant="ghost" />
+
               <Link to="/login">
                 <motion.button
-                  whileHover={{scale: 1.1}}
-                  whileTap={{scale: 0.9}}
-                  className="p-2 text-gray-600 hover:text-primary-600 transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="p-2 text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                   aria-label="Login"
                 >
                   <SafeIcon icon={FiUser} className="w-5 h-5" />
@@ -95,9 +103,9 @@ const Header=()=> {
 
               <Link to="/admin">
                 <motion.button
-                  whileHover={{scale: 1.1}}
-                  whileTap={{scale: 0.9}}
-                  className="p-2 text-gray-600 hover:text-red-600 transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="p-2 text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 transition-colors"
                   aria-label="Admin"
                 >
                   <SafeIcon icon={FiShield} className="w-5 h-5" />
@@ -107,8 +115,8 @@ const Header=()=> {
 
             {/* Mobile menu button */}
             <button
-              onClick={()=> setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 text-gray-600 hover:text-primary-600"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-2 text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
               aria-label="Toggle menu"
             >
               <SafeIcon icon={isMenuOpen ? FiX : FiMenu} className="w-6 h-6" />
@@ -118,44 +126,52 @@ const Header=()=> {
           {/* Mobile Navigation */}
           {isMenuOpen && (
             <motion.div
-              initial={{opacity: 0,y: -10}}
-              animate={{opacity: 1,y: 0}}
-              exit={{opacity: 0,y: -10}}
-              className="md:hidden py-4 border-t"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="md:hidden py-4 border-t border-gray-200 dark:border-gray-700"
             >
               <nav className="flex flex-col space-y-2">
-                {navigation.map((item)=> (
+                {navigation.map((item) => (
                   <Link
                     key={item.name}
                     to={item.href}
                     onClick={handleLinkClick}
                     className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                       isActive(item.href)
-                        ? 'text-primary-600 bg-primary-50'
-                        : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50'
+                        ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20'
+                        : 'text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800'
                     }`}
                   >
                     {item.name}
                   </Link>
                 ))}
-                
+
                 {/* Mobile Search Button */}
                 <button
-                  onClick={()=> {
+                  onClick={() => {
                     setIsMenuOpen(false);
                     handleSearchOpen();
                   }}
-                  className="flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors"
+                  className="flex items-center px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors"
                 >
                   <SafeIcon icon={FiSearch} className="w-4 h-4 mr-2" />
                   Search
                 </button>
-                
+
+                {/* Mobile Theme Toggle */}
+                <div className="flex items-center justify-between px-3 py-2">
+                  <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                    Theme
+                  </span>
+                  <ThemeToggle size="sm" variant="ghost" />
+                </div>
+
                 {/* Mobile Login Button */}
                 <Link
                   to="/login"
                   onClick={handleLinkClick}
-                  className="flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors"
+                  className="flex items-center px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors"
                 >
                   <SafeIcon icon={FiUser} className="w-4 h-4 mr-2" />
                   Login
@@ -165,7 +181,7 @@ const Header=()=> {
                 <Link
                   to="/admin"
                   onClick={handleLinkClick}
-                  className="flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-red-600 hover:bg-gray-50 rounded-md transition-colors"
+                  className="flex items-center px-3 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors"
                 >
                   <SafeIcon icon={FiShield} className="w-4 h-4 mr-2" />
                   Admin Panel
