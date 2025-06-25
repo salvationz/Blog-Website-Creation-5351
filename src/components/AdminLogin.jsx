@@ -3,10 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
 
-const { 
-  FiUser, FiLock, FiEye, FiEyeOff, FiShield, FiArrowRight,
-  FiAlertTriangle, FiCheck, FiSettings
-} = FiIcons;
+const { FiUser, FiLock, FiEye, FiEyeOff, FiShield, FiArrowRight, FiAlertTriangle, FiCheck, FiSettings } = FiIcons;
 
 const AdminLogin = ({ onLogin }) => {
   const [formData, setFormData] = useState({
@@ -30,7 +27,7 @@ const AdminLogin = ({ onLogin }) => {
       ...prev,
       [name]: value
     }));
-    
+
     // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({
@@ -59,17 +56,15 @@ const AdminLogin = ({ onLogin }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
     if (!validateForm()) return;
 
     setIsLoading(true);
-    
+
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500));
-    
+
     // Check credentials
-    if (formData.username === adminCredentials.username && 
-        formData.password === adminCredentials.password) {
+    if (formData.username === adminCredentials.username && formData.password === adminCredentials.password) {
       setIsLoading(false);
       onLogin({
         username: formData.username,
@@ -87,7 +82,7 @@ const AdminLogin = ({ onLogin }) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center p-4">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
