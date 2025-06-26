@@ -10,10 +10,13 @@ import LoginPage from './components/LoginPage';
 import AdminPanel from './components/AdminPanel';
 import AnalyticsDashboard from './components/AnalyticsDashboard';
 import Home from './pages/Home';
+import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Category from './pages/Category';
+import Courses from './pages/Courses';
+import CourseDetail from './pages/CourseDetail';
 
 function App() {
   return (
@@ -29,6 +32,9 @@ function App() {
           >
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/courses" element={<Courses />} />
+              <Route path="/course/:id" element={<CourseDetail />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/admin" element={<AdminPanel />} />
               <Route path="/analytics" element={<AnalyticsDashboard />} />
