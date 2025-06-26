@@ -9,6 +9,7 @@ import { FloatingThemeToggle } from './components/ThemeToggle';
 import LoginPage from './components/LoginPage';
 import AdminPanel from './components/AdminPanel';
 import AnalyticsDashboard from './components/AnalyticsDashboard';
+import CoursesCRMPage from './pages/CoursesCRM';
 import Home from './pages/Home';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
@@ -34,6 +35,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/courses" element={<Courses />} />
+              <Route path="/courses-crm" element={<CoursesCRMPage />} />
               <Route path="/course/:id" element={<CourseDetail />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/admin" element={<AdminPanel />} />
