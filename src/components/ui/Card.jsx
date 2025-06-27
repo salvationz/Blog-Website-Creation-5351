@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useTheme } from './ThemeProvider.jsx';
+import { useTheme } from '../ThemeProvider.jsx';
 
 const Card = ({ 
   variant = 'default', 

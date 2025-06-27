@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useTheme } from './ThemeProvider.jsx';
-import SafeIcon from '../common/SafeIcon.jsx';
+import { useTheme } from '../ThemeProvider.jsx';
+import SafeIcon from '../../common/SafeIcon.jsx';
 
 const Button = ({ 
   variant = 'primary', 

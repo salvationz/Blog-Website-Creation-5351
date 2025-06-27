@@ -1,6 +1,6 @@
 import React from 'react';
-import { useTheme } from './ThemeProvider.jsx';
-import SafeIcon from '../common/SafeIcon.jsx';
+import { useTheme } from '../ThemeProvider.jsx';
+import SafeIcon from '../../common/SafeIcon.jsx';
 
 const Badge = ({ 
   variant = 'primary', 
