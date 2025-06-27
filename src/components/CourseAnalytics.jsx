@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
-import Chart from './Chart';
+import Chart from './ui/Chart';
 
 const {
   FiBarChart3, FiTrendingUp, FiTrendingDown, FiUsers, FiDollarSign,

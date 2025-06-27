@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import * as FiIcons from 'react-icons/fi';
-import SafeIcon from '../common/SafeIcon';
-import SearchModal from './SearchModal';
-import ThemeToggle from './ThemeToggle';
+import SafeIcon from '../../common/SafeIcon';
+import SearchModal from '../SearchModal';
+import ThemeToggle from '../ThemeToggle';
 
 const {
   FiMenu, FiX, FiSearch, FiUser, FiShield, FiChevronDown, FiCode, FiPenTool,

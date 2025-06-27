@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
-import { useTheme } from './ThemeProvider.jsx';
+import { useTheme } from '../ThemeProvider.jsx';
 
 const Section = ({ 
   variant = 'default',
@@ -110,5 +111,27 @@ Section.Content = ({ children, className = '', ...props }) => (
     {children}
   </div>
 );
+Section.propTypes = {
+  variant: PropTypes.string,
+  padding: PropTypes.string,
+  container: PropTypes.string,
+  background: PropTypes.string,
+  className: PropTypes.string,
+  children: PropTypes.node,
+};
 
+Section.Header.propTypes = {
+  title: PropTypes.node,
+  subtitle: PropTypes.node,
+  description: PropTypes.node,
+  centered: PropTypes.bool,
+  className: PropTypes.string,
+};
+
+Section.Content.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+};
+
+export default Section;
 export default Section;

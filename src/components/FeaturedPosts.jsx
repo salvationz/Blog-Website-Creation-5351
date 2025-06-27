@@ -40,10 +40,6 @@ const FeaturedPosts = () => {
     }
   ];
 
-  const handleLinkClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -154,7 +150,7 @@ const FeaturedPosts = () => {
                 </div>
 
                 {/* Read More Button */}
-                <Link to={`/post/${post.id}`} onClick={handleLinkClick}>
+                <Link to={`/post/${post.id}`}>
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -177,7 +173,7 @@ const FeaturedPosts = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center mt-12"
         >
-          <Link to="/blog" onClick={handleLinkClick}>
+          <Link to="/blog">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

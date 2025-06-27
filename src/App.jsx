@@ -2,9 +2,9 @@ import React from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ThemeProvider from './components/ThemeProvider';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import ScrollToTop from './components/ScrollToTop';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
+import ScrollToTop from './components/layout/ScrollToTop';
 import { FloatingThemeToggle } from './components/ThemeToggle';
 import LoginPage from './components/LoginPage';
 import AdminPanel from './components/AdminPanel';
@@ -23,6 +23,7 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
+        <ScrollToTop />
         <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col transition-all duration-300">
           <Header />
           <motion.main
@@ -47,7 +48,6 @@ function App() {
             </Routes>
           </motion.main>
           <Footer />
-          <ScrollToTop />
           <FloatingThemeToggle position="bottom-left" />
         </div>
       </Router>

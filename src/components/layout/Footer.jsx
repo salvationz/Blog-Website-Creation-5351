@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import * as FiIcons from 'react-icons/fi';
-import SafeIcon from '../common/SafeIcon';
-import { ThemeSwitch } from './ThemeToggle';
+import SafeIcon from '../../common/SafeIcon';
+import { ThemeSwitch } from '../ThemeToggle';
 
 const { FiTwitter, FiFacebook, FiInstagram, FiLinkedin, FiMail, FiHeart } = FiIcons;
 
@@ -27,13 +27,13 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               {[FiTwitter, FiFacebook, FiInstagram, FiLinkedin].map((Icon, index) => (
-                <a
+                <Link
                   key={index}
                   href="#"
                   className="p-2 bg-gray-800 dark:bg-gray-900 rounded-full hover:bg-primary-600 dark:hover:bg-primary-700 transition-colors duration-200"
                 >
                   <SafeIcon icon={Icon} className="w-5 h-5 text-white" />
-                </a>
+                </Link>
               ))}
             </div>
           </div>

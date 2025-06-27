@@ -165,7 +165,7 @@ const TableOfContents = ({ content }) => {
                       transition={{ delay: index * 0.05 }}
                       onClick={() => scrollToHeading(heading.id)}
                       className={`
-                        w-full text-left p-3 rounded-lg transition-colors
+                        w-3/4 text-left p-2 rounded-lg transition-colors
                         ${getIndentClass(heading.level)}
                         ${activeHeading === heading.id
                           ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 border-l-4 border-primary-500 dark:border-primary-400'
@@ -200,7 +200,7 @@ const TableOfContents = ({ content }) => {
           <SafeIcon icon={FiList} className="w-5 h-5 text-primary-600 dark:text-primary-400" />
           <h3 className="font-bold text-gray-900 dark:text-white">Table of Contents</h3>
         </div>
-        <nav className="space-y-1 max-h-96 overflow-y-auto">
+        <nav className="space-y-1 h-full max-h-[70vh] overflow-y-auto">
           {headings.map((heading, index) => (
             <motion.button
               key={index}
@@ -209,7 +209,7 @@ const TableOfContents = ({ content }) => {
               transition={{ delay: index * 0.05 }}
               onClick={() => scrollToHeading(heading.id)}
               className={`
-                w-full text-left p-2 rounded-lg transition-all duration-200 group
+                w-4/5 text-left p-2 rounded-lg transition-all duration-200 group
                 ${getIndentClass(heading.level)}
                 ${activeHeading === heading.id
                   ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 border-l-4 border-primary-500 dark:border-primary-400'
