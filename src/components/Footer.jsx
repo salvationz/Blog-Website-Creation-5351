@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
 import { ThemeSwitch } from './ThemeToggle';
@@ -7,6 +7,13 @@ import { ThemeSwitch } from './ThemeToggle';
 const { FiTwitter, FiFacebook, FiInstagram, FiLinkedin, FiMail, FiHeart } = FiIcons;
 
 const Footer = () => {
+  const location = useLocation();
+  
+  // Don't render the footer in admin panel
+  if (location.pathname.startsWith('/admin')) {
+    return null;
+  }
+
   return (
     <footer className="bg-gray-900 dark:bg-gray-950 text-white transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -15,7 +22,7 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-2">
             <h3 className="text-2xl font-bold mb-4 text-white">TechBlog</h3>
             <p className="text-gray-400 dark:text-gray-500 mb-6 max-w-md">
-              Discover the latest insights in technology, design, and business. Join our community of 
+              Discover the latest insights in technology, design, and business. Join our community of
               forward-thinking professionals and stay ahead of the curve.
             </p>
             <div className="flex space-x-4">
@@ -71,7 +78,9 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="mb-4 md:mb-0">
               <h4 className="text-lg font-semibold mb-2 text-white">Stay Updated</h4>
-              <p className="text-gray-400 dark:text-gray-500">Get the latest posts delivered right to your inbox.</p>
+              <p className="text-gray-400 dark:text-gray-500">
+                Get the latest posts delivered right to your inbox.
+              </p>
             </div>
             <div className="flex w-full md:w-auto">
               <input
@@ -94,7 +103,6 @@ const Footer = () => {
                 Made with <SafeIcon icon={FiHeart} className="w-4 h-4 mx-1 text-red-500" /> by TechBlog Team
               </p>
             </div>
-            
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-3">
                 <span className="text-sm font-medium text-gray-400 dark:text-gray-500">Theme:</span>

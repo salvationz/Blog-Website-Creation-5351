@@ -7,8 +7,8 @@ import SearchModal from './SearchModal';
 import ThemeToggle from './ThemeToggle';
 
 const {
-  FiMenu, FiX, FiSearch, FiUser, FiShield, FiChevronDown, FiCode, 
-  FiPenTool, FiBriefcase, FiBookOpen, FiGraduationCap
+  FiMenu, FiX, FiSearch, FiUser, FiShield, FiChevronDown, FiCode, FiPenTool,
+  FiBriefcase, FiBookOpen, FiGraduationCap
 } = FiIcons;
 
 const Header = () => {
@@ -17,10 +17,13 @@ const Header = () => {
   const [isBlogDropdownOpen, setIsBlogDropdownOpen] = useState(false);
   const location = useLocation();
 
+  // Check if we're in admin panel
+  const isAdminPanel = location.pathname.startsWith('/admin');
+
   const navigation = [
     { name: 'Home', href: '/' },
-    { 
-      name: 'Blog', 
+    {
+      name: 'Blog',
       href: '/blog',
       hasDropdown: true,
       dropdownItems: [
@@ -55,7 +58,11 @@ const Header = () => {
     { name: 'Contact', href: '/contact' }
   ];
 
-  const isActive = (href) => location.pathname === href;
+  const isActive = (href) => {
+    // Don't highlight navigation items when in admin panel
+    if (isAdminPanel) return false;
+    return location.pathname === href;
+  };
 
   const handleSearchOpen = () => {
     setIsSearchOpen(true);
@@ -75,6 +82,11 @@ const Header = () => {
   const handleDropdownToggle = () => {
     setIsBlogDropdownOpen(!isBlogDropdownOpen);
   };
+
+  // Don't render the header in admin panel
+  if (isAdminPanel) {
+    return null;
+  }
 
   return (
     <>
@@ -107,11 +119,11 @@ const Header = () => {
                         }`}
                       >
                         <span>{item.name}</span>
-                        <SafeIcon 
-                          icon={FiChevronDown} 
+                        <SafeIcon
+                          icon={FiChevronDown}
                           className={`w-4 h-4 transition-transform duration-200 ${
                             isBlogDropdownOpen ? 'rotate-180' : ''
-                          }`} 
+                          }`}
                         />
                       </button>
 
@@ -133,20 +145,28 @@ const Header = () => {
                                 onClick={handleLinkClick}
                                 className="flex items-center space-x-3 px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors group"
                               >
-                                <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                                  dropdownItem.name === 'Technology' ? 'bg-blue-100 dark:bg-blue-900/30' :
-                                  dropdownItem.name === 'Design' ? 'bg-purple-100 dark:bg-purple-900/30' :
-                                  dropdownItem.name === 'Business' ? 'bg-green-100 dark:bg-green-900/30' :
-                                  'bg-gray-100 dark:bg-gray-700'
-                                }`}>
-                                  <SafeIcon 
-                                    icon={dropdownItem.icon} 
+                                <div
+                                  className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                                    dropdownItem.name === 'Technology'
+                                      ? 'bg-blue-100 dark:bg-blue-900/30'
+                                      : dropdownItem.name === 'Design'
+                                      ? 'bg-purple-100 dark:bg-purple-900/30'
+                                      : dropdownItem.name === 'Business'
+                                      ? 'bg-green-100 dark:bg-green-900/30'
+                                      : 'bg-gray-100 dark:bg-gray-700'
+                                  }`}
+                                >
+                                  <SafeIcon
+                                    icon={dropdownItem.icon}
                                     className={`w-5 h-5 ${
-                                      dropdownItem.name === 'Technology' ? 'text-blue-600 dark:text-blue-400' :
-                                      dropdownItem.name === 'Design' ? 'text-purple-600 dark:text-purple-400' :
-                                      dropdownItem.name === 'Business' ? 'text-green-600 dark:text-green-400' :
-                                      'text-gray-600 dark:text-gray-400'
-                                    }`} 
+                                      dropdownItem.name === 'Technology'
+                                        ? 'text-blue-600 dark:text-blue-400'
+                                        : dropdownItem.name === 'Design'
+                                        ? 'text-purple-600 dark:text-purple-400'
+                                        : dropdownItem.name === 'Business'
+                                        ? 'text-green-600 dark:text-green-400'
+                                        : 'text-gray-600 dark:text-gray-400'
+                                    }`}
                                   />
                                 </div>
                                 <div className="flex-1">
@@ -252,11 +272,11 @@ const Header = () => {
                             }`}
                           >
                             <span>{item.name}</span>
-                            <SafeIcon 
-                              icon={FiChevronDown} 
+                            <SafeIcon
+                              icon={FiChevronDown}
                               className={`w-4 h-4 transition-transform duration-200 ${
                                 isBlogDropdownOpen ? 'rotate-180' : ''
-                              }`} 
+                              }`}
                             />
                           </button>
 
@@ -277,14 +297,17 @@ const Header = () => {
                                     onClick={handleLinkClick}
                                     className="flex items-center space-x-3 px-3 py-2 text-sm rounded-md transition-colors text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800"
                                   >
-                                    <SafeIcon 
-                                      icon={dropdownItem.icon} 
+                                    <SafeIcon
+                                      icon={dropdownItem.icon}
                                       className={`w-4 h-4 ${
-                                        dropdownItem.name === 'Technology' ? 'text-blue-500' :
-                                        dropdownItem.name === 'Design' ? 'text-purple-500' :
-                                        dropdownItem.name === 'Business' ? 'text-green-500' :
-                                        'text-gray-500'
-                                      }`} 
+                                        dropdownItem.name === 'Technology'
+                                          ? 'text-blue-500'
+                                          : dropdownItem.name === 'Design'
+                                          ? 'text-purple-500'
+                                          : dropdownItem.name === 'Business'
+                                          ? 'text-green-500'
+                                          : 'text-gray-500'
+                                      }`}
                                     />
                                     <span>{dropdownItem.name}</span>
                                   </Link>

@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
+import CoursesCRM from './CoursesCRM';
 
 const {
-  FiUsers, FiFileText, FiBarChart3, FiSettings, FiBell, FiSearch, FiPlus, FiEdit3,
-  FiTrash2, FiEye, FiDownload, FiUpload, FiCalendar, FiClock, FiTrendingUp,
-  FiTrendingDown, FiActivity, FiGlobe, FiShield, FiDatabase, FiMonitor,
-  FiMail, FiMessageSquare, FiHeart, FiShare2, FiBookmark, FiStar, FiFilter,
-  FiRefreshCw, FiMoreVertical, FiLogOut, FiUser, FiHome, FiFolder, FiImage,
-  FiVideo, FiMusic, FiCommand, FiZap
+  FiUsers, FiFileText, FiBarChart3, FiSettings, FiBell, FiSearch, FiPlus,
+  FiEdit3, FiTrash2, FiEye, FiDownload, FiUpload, FiCalendar, FiClock,
+  FiTrendingUp, FiTrendingDown, FiActivity, FiGlobe, FiShield, FiDatabase,
+  FiMonitor, FiMail, FiMessageSquare, FiHeart, FiShare2, FiBookmark, FiStar,
+  FiFilter, FiRefreshCw, FiMoreVertical, FiLogOut, FiUser, FiHome, FiFolder,
+  FiImage, FiVideo, FiMusic, FiCommand, FiZap, FiBookOpen, FiGraduationCap
 } = FiIcons;
 
 const AdminDashboard = ({ user, onLogout }) => {
@@ -91,6 +92,7 @@ const AdminDashboard = ({ user, onLogout }) => {
     { id: 'dashboard', icon: FiHome, label: 'Dashboard' },
     { id: 'posts', icon: FiFileText, label: 'Posts' },
     { id: 'users', icon: FiUsers, label: 'Users' },
+    { id: 'courses-crm', icon: FiGraduationCap, label: 'Courses CRM' },
     { id: 'media', icon: FiImage, label: 'Media' },
     { id: 'analytics', icon: FiBarChart3, label: 'Analytics' },
     { id: 'comments', icon: FiMessageSquare, label: 'Comments' },
@@ -107,8 +109,13 @@ const AdminDashboard = ({ user, onLogout }) => {
           <p className="text-sm font-medium text-gray-600 dark:text-gray-400">{title}</p>
           <p className="text-2xl font-bold text-gray-900 dark:text-white mt-2">{value.toLocaleString()}</p>
           {change && (
-            <div className={`flex items-center mt-2 text-sm ${change >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
-              <SafeIcon icon={change >= 0 ? FiTrendingUp : FiTrendingDown} className="w-4 h-4 mr-1" />
+            <div className={`flex items-center mt-2 text-sm ${
+              change >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'
+            }`}>
+              <SafeIcon 
+                icon={change >= 0 ? FiTrendingUp : FiTrendingDown} 
+                className="w-4 h-4 mr-1" 
+              />
               <span>{Math.abs(change)}% vs last month</span>
             </div>
           )}
@@ -191,7 +198,7 @@ const AdminDashboard = ({ user, onLogout }) => {
                   activity.type === 'comment' ? 'bg-yellow-100 dark:bg-yellow-900/30' :
                   'bg-purple-100 dark:bg-purple-900/30'
                 }`}>
-                  <SafeIcon
+                  <SafeIcon 
                     icon={
                       activity.type === 'user' ? FiUser :
                       activity.type === 'post' ? FiFileText :
@@ -248,7 +255,7 @@ const AdminDashboard = ({ user, onLogout }) => {
                   <td className="py-3 px-4 text-gray-700 dark:text-gray-300">{post.author}</td>
                   <td className="py-3 px-4">
                     <span className={`px-2 py-1 text-xs rounded-full ${
-                      post.status === 'published'
+                      post.status === 'published' 
                         ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400'
                         : 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400'
                     }`}>
@@ -380,7 +387,7 @@ const AdminDashboard = ({ user, onLogout }) => {
                   </td>
                   <td className="py-4 px-6">
                     <span className={`px-2 py-1 text-xs rounded-full ${
-                      post.status === 'published'
+                      post.status === 'published' 
                         ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400'
                         : 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400'
                     }`}>
@@ -476,7 +483,7 @@ const AdminDashboard = ({ user, onLogout }) => {
                   </td>
                   <td className="py-4 px-6">
                     <span className={`px-2 py-1 text-xs rounded-full ${
-                      user.status === 'active'
+                      user.status === 'active' 
                         ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400'
                         : 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300'
                     }`}>
@@ -515,6 +522,8 @@ const AdminDashboard = ({ user, onLogout }) => {
         return renderPosts();
       case 'users':
         return renderUsers();
+      case 'courses-crm':
+        return <CoursesCRM />;
       case 'media':
         return (
           <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-12 text-center">
@@ -580,6 +589,11 @@ const AdminDashboard = ({ user, onLogout }) => {
             >
               <SafeIcon icon={item.icon} className="w-5 h-5" />
               <span className="font-medium">{item.label}</span>
+              {item.id === 'courses-crm' && (
+                <span className="ml-auto px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-xs rounded-full font-bold">
+                  NEW
+                </span>
+              )}
             </button>
           ))}
         </nav>
@@ -630,8 +644,12 @@ const AdminDashboard = ({ user, onLogout }) => {
         <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 px-6 py-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white capitalize">{activeTab}</h1>
-              <p className="text-gray-600 dark:text-gray-400">Manage your content management system</p>
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-white capitalize">
+                {activeTab === 'courses-crm' ? 'Courses CRM' : activeTab}
+              </h1>
+              <p className="text-gray-600 dark:text-gray-400">
+                {activeTab === 'courses-crm' ? 'Comprehensive course management system' : 'Manage your content management system'}
+              </p>
             </div>
             <div className="flex items-center space-x-4">
               {/* Search */}
