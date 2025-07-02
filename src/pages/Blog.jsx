@@ -246,10 +246,6 @@ const Blog = () => {
   const featuredPosts = posts.filter(post => post.featured);
   const trendingPosts = posts.filter(post => post.trending);
 
-  const handleLinkClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   const toggleLike = (postId) => {
     setLikedPosts(prev => {
       const newLiked = new Set(prev);
@@ -444,7 +440,7 @@ const Blog = () => {
             </div>
           </div>
 
-          <Link to={`/post/${post.id}`} onClick={handleLinkClick}>
+          <Link to={`/post/${post.id}`}>
             <button className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium group">
               Read More
               <SafeIcon icon={FiArrowRight} className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -555,7 +551,6 @@ const Blog = () => {
               
               <Link
                 to={`/post/${post.id}`}
-                onClick={handleLinkClick}
                 className="mt-4 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors font-medium"
               >
                 Read More
@@ -1001,7 +996,7 @@ const Blog = () => {
                       <span>{post.likes}</span>
                     </div>
                   </div>
-                  <Link to={`/post/${post.id}`} onClick={handleLinkClick}>
+                  <Link to={`/post/${post.id}`} >
                     <button className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300">
                       <SafeIcon icon={FiArrowRight} className="w-4 h-4" />
                     </button>

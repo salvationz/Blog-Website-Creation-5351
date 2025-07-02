@@ -6,40 +6,7 @@ import SafeIcon from '../common/SafeIcon.jsx';
 
 const { FiClock, FiUser, FiArrowRight } = FiIcons;
 
-const FeaturedPosts = () => {
-  const posts = [
-    {
-      id: 2,
-      title: "Mastering React Hooks: Advanced Patterns and Best Practices",
-      excerpt: "Deep dive into advanced React Hooks patterns that will elevate your component architecture.",
-      image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-      author: "Michael Chen",
-      date: "Dec 12, 2024",
-      readTime: "12 min read",
-      category: "Technology"
-    },
-    {
-      id: 3,
-      title: "Design Systems That Scale: Building for the Future",
-      excerpt: "Learn how to create design systems that grow with your product and team.",
-      image: "https://images.unsplash.com/photo-1558655146-d09347e92766?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-      author: "Emma Rodriguez",
-      date: "Dec 10, 2024",
-      readTime: "10 min read",
-      category: "Design"
-    },
-    {
-      id: 4,
-      title: "The Psychology of User Experience: What Drives Engagement",
-      excerpt: "Understand the psychological principles that make interfaces intuitive and engaging.",
-      image: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-      author: "David Park",
-      date: "Dec 8, 2024",
-      readTime: "15 min read",
-      category: "Business"
-    }
-  ];
-
+const FeaturedPosts = ({ posts, ...props }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {

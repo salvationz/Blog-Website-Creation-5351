@@ -7,7 +7,7 @@ import Footer from './components/layout/Footer';
 import ScrollToTop from './components/layout/ScrollToTop';
 import { FloatingThemeToggle } from './components/ThemeToggle';
 import LoginPage from './components/LoginPage';
-import AdminPanel from './components/AdminPanel';
+import AdminPanel from './components/admin/AdminPanel';
 import AnalyticsDashboard from './components/AnalyticsDashboard';
 import CoursesCRMPage from './pages/CoursesCRM';
 import Home from './pages/Home';

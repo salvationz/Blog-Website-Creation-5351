@@ -6,21 +6,7 @@ import SafeIcon from '../common/SafeIcon.jsx';
 
 const { FiArrowRight, FiClock, FiUser } = FiIcons;
 
-const Hero = () => {
-  const featuredPost = {
-    id: 1,
-    title: "The Future of Web Development: Trends to Watch in 2024",
-    excerpt: "Explore the cutting-edge technologies and methodologies that are shaping the future of web development.",
-    image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
-    author: "Sarah Johnson",
-    date: "Dec 15, 2024",
-    readTime: "8 min read",
-    category: "Technology"
-  };
-
-  const handleLinkClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+const Hero = ({ featuredPost, ...props }) => {
 
   return (
     <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden py-20 md:py-24 lg:py-32">
@@ -61,7 +47,7 @@ const Hero = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to={`/post/${featuredPost.id}`} onClick={handleLinkClick}>
+              <Link to={`/post/${featuredPost.id}`}>
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
